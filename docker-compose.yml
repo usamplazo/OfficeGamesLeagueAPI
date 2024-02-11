@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  officegamesleague:
+    image: ${DOCKER_REGISTRY-}officegamesleague
+    build:
+      context: .
+      dockerfile: OfficeGamesLeague/Dockerfile
