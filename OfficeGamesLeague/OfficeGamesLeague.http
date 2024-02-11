@@ -1,0 +1,6 @@
+@OfficeGamesLeague_HostAddress = http://localhost:5189
+
+GET {{OfficeGamesLeague_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
