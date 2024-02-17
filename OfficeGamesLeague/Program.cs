@@ -1,3 +1,5 @@
+using OfficeGamesLeague.Models;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Host.UseSerilog((context, configuration) => 
     configuration.ReadFrom.Configuration(context.Configuration));
+
+string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<GameLeagueDbContext>(o =>
+{
+    o.UseSqlServer(connectionString);
+});
 
 var app = builder.Build();
 
