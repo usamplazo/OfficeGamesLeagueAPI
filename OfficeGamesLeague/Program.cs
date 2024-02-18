@@ -1,6 +1,7 @@
 using OfficeGamesLeague.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using OfficeGamesLeague.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Services.AddDbContext<GameLeagueDbContext>(o =>
 {
     o.UseSqlServer(connectionString);
 });
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
