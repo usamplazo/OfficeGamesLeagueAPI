@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeGamesLeague", "Office
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2AE0A72E-3000-4861-8347-E86CE6E48758}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeGameLeague.IntegrationTest", "..\OfficeGameLeague.IntegrationTest\OfficeGameLeague.IntegrationTest.csproj", "{389840E9-EE10-4B59-83E1-E6C874091AE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2AE0A72E-3000-4861-8347-E86CE6E48758}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AE0A72E-3000-4861-8347-E86CE6E48758}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AE0A72E-3000-4861-8347-E86CE6E48758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{389840E9-EE10-4B59-83E1-E6C874091AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{389840E9-EE10-4B59-83E1-E6C874091AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{389840E9-EE10-4B59-83E1-E6C874091AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{389840E9-EE10-4B59-83E1-E6C874091AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
