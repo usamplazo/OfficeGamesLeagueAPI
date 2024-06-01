@@ -14,12 +14,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+	  <!--<ProjectReference Include="..\..\External\Infrastructure\Infrastructure.csproj" />-->
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Contestants\" />
     <Folder Include="Disciplines\" />
-    <Folder Include="Scoreboards\Queries\" />
   </ItemGroup> 
 
 </Project>

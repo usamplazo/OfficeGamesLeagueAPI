@@ -1,4 +1,4 @@
-﻿using ICommand = Application.Abstrsction.Messaging.ICommand;
+﻿using Application.Abstrsction.Messaging;
 
 namespace Application.Scoreboards.Commands.CreateScoreboard
 {

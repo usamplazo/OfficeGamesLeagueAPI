@@ -1,8 +1,7 @@
 ﻿namespace Application.Repository
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
-        //GameLeagueDbContext Context { get; }
-        public Task<int> SaveChangesAsync(CancellationToken cancellation = default);
+        public Task SaveChangesAsync(CancellationToken cancellation = default);
     }
 }

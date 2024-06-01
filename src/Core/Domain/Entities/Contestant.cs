@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Primitives;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities
 {
-    public class Contestant
+    public class Contestant : IAuditableEntity
     {
         [Key]
         public int ContestantId { get; set; }
@@ -30,5 +31,8 @@ namespace Domain.Entities
 
         public string? Image { get; set; }
 
+        public DateTime CreatedOnUtc { get; set; }
+
+        public DateTime? ModifiedOnUtc { get; set; }
     }
 }

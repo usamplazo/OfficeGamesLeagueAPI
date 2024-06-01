@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
+using Domain.Primitives;
 
 namespace Domain.Entities
 {
-    public class Scoreboard
+    public class Scoreboard : AggregateRoot, IAuditableEntity
     {
         public Scoreboard(int scoreboardId, int contestantId, int disciplineId, DateTime timeDisciplineStarted, DateTime timeDisciplineFinished, int dateDisciplinePlayed)
         {
@@ -16,6 +16,9 @@ namespace Domain.Entities
             DateDisciplinePlayed = dateDisciplinePlayed;
         }
 
+        public Scoreboard()
+        {
+        }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ScoreboardId { get; set; }
@@ -36,5 +39,8 @@ namespace Domain.Entities
         // int DateDisciplinePlayed for better performance in data quering
         // format: yyyyMMdd 
         public int DateDisciplinePlayed { get; set; }
+
+        public DateTime CreatedOnUtc { get; set; }
+        public DateTime? ModifiedOnUtc { get; set; }
     }
 }

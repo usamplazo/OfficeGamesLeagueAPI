@@ -1,14 +1,31 @@
-using OfficeGamesLeague.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using OfficeGamesLeague.UnitOfWork;
+using Infrastructure.Migrations;
+using Infrastructure.Repositories;
+using Domain.Abstractions;
+using Persistance.Interceptors;
+using Persistance;
+using Application.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services
+    .Scan(
+        selector => selector
+        .FromAssemblies(Infrastructure.AssemblyReference.Assembly)
+        .AddClasses(false)
+        .AsImplementedInterfaces()
+        .WithScopedLifetime());
+ 
+builder.Services.AddMediatR(cfg=>cfg.RegisterServicesFromAssembly(Application.AssemblyReference.Assembly));
+
+builder.Services
+    .AddControllers()
+    .AddApplicationPart(Presentation.AssemblyReference.Assembly);
+
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -17,21 +34,31 @@ builder.Host.UseSerilog((context, configuration) =>
 
 string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<GameLeagueDbContext>(o =>
+builder.Services.AddSingleton<UpdateAuditableEntitesInterceptor>();
+
+builder.Services.AddDbContext<GameLeagueDbContext>((sp, optionsBuilder) =>
 {
-    o.UseSqlServer(connectionString);
+    var auditableInterceptors = sp.GetService<UpdateAuditableEntitesInterceptor>()!;
+
+    optionsBuilder.UseSqlServer(connectionString,
+        o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery))
+    .AddInterceptors(auditableInterceptors);
 });
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IScorebaordRepository, ScoreboardRepository>();
+
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 
