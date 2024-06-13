@@ -4,11 +4,11 @@ namespace Application.Scoreboards.Commands.CreateScoreboard
 {
   //sadrzi podatke koji su nam potrebni da bi napravili scoreboard objekat
 
-    public sealed record CreateScoreboardCommand(int ScoreboardId
-                                                ,int ContestantId
-                                                ,int DisciplineId
-                                                ,DateTime TimeDisciplineStarted
-                                                ,DateTime TimeDisciplineFinished
-                                                ,int DateDisciplinePlayed) : ICommand;
+    public sealed record CreateScoreboardCommand(Guid ScoreboardId
+                                                ,Guid ContestantId
+                                                ,Guid DisciplineId
+                                                ,int DateDisciplinePlayed 
+                                                ,DateTime CreatedOnUtc
+                                                ,DateTime? ModifiedOnUtc) : ICommand;
 
 }

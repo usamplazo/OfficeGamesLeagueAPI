@@ -6,7 +6,7 @@ namespace Domain.Entities
     public class Discipline : IAuditableEntity
     {
         [Key]
-        public int DisciplineId { get; set; }
+        public Guid DisciplineId { get; set; }
 
         [Required]
         [MaxLength(20)]
@@ -16,15 +16,15 @@ namespace Domain.Entities
         public string Description { get; set; }
 
         [Required]
-        public float Points { get; set; }
+        public decimal Points { get; set; }
 
         [Required]
         public int DailyLimit { get; set; }
 
         public string? Image { get; set; }
 
-        public DateTime CreatedOnUtc { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime CreatedOnUtc { get; set; }
 
-        public DateTime? ModifiedOnUtc { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime? ModifiedOnUtc { get; set; }
     }
 }

@@ -32,7 +32,7 @@ builder.Services.AddSwaggerGen();
 builder.Host.UseSerilog((context, configuration) => 
     configuration.ReadFrom.Configuration(context.Configuration));
 
-string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+string? connectionString = builder.Configuration.GetConnectionString("Database");
 
 builder.Services.AddSingleton<UpdateAuditableEntitesInterceptor>();
 

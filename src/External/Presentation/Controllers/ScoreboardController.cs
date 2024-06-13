@@ -18,12 +18,12 @@ public sealed class ScoreboardController : ApiController
     {
         //scoreboardId should be guid and not hardcoded
         var command = new CreateScoreboardCommand(
-            1010
-            , 20
-            , 20
+            new Guid()
+            , new Guid()
+            , new Guid()
+            , int.Parse(DateTime.Now.ToString("yyyymmdd"))
             , DateTime.Now
-            , DateTime.Now.AddMinutes(15)
-            , int.Parse(DateTime.Now.ToString("yyyymmdd")));
+            , DateTime.Now.AddMinutes(15));
 
         var result = await Sender.Send(command, cancellationToken);
 

@@ -6,41 +6,36 @@ namespace Domain.Entities
 {
     public class Scoreboard : AggregateRoot, IAuditableEntity
     {
-        public Scoreboard(int scoreboardId, int contestantId, int disciplineId, DateTime timeDisciplineStarted, DateTime timeDisciplineFinished, int dateDisciplinePlayed)
+        public Scoreboard(Guid scoreboardId, Guid contestantId, Guid disciplineId,int dateDisciplinePlayed, DateTime createdOnUtc, DateTime? modifiedOnUtc)
         {
             ScoreboardId = scoreboardId;
             ContestantId = contestantId;
             DisciplineId = disciplineId;
-            TimeDisciplineStarted = timeDisciplineStarted;
-            TimeDisciplineFinished = timeDisciplineFinished;
             DateDisciplinePlayed = dateDisciplinePlayed;
+            CreatedOnUtc = createdOnUtc;
+            ModifiedOnUtc = modifiedOnUtc;
         }
 
         public Scoreboard()
         {
         }
 
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ScoreboardId { get; set; }
+        [Key]
+        public Guid ScoreboardId { get; set; }
 
         [Required]
-        public int ContestantId { get; set; }
+        public Guid ContestantId { get; set; }
 
         [Required]
-        public int DisciplineId { get; set; }
+        public Guid DisciplineId { get; set; }
 
         [Required]
-        public DateTime TimeDisciplineStarted { get; set; }
-
-        [Required]
-        public DateTime TimeDisciplineFinished { get; set; }
-
-        [Required]
-        // int DateDisciplinePlayed for better performance in data quering
-        // format: yyyyMMdd 
+        // for better performance in data quering
+        // format: yyyyMMdd
         public int DateDisciplinePlayed { get; set; }
 
         public DateTime CreatedOnUtc { get; set; }
+
         public DateTime? ModifiedOnUtc { get; set; }
     }
 }

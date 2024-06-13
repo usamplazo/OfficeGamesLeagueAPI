@@ -6,15 +6,15 @@ namespace Domain.Entities
     public class Contestant : IAuditableEntity
     {
         [Key]
-        public int ContestantId { get; set; }
+        public Guid ContestantId { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        public string FirstName { get; set; }
+        //[Required]
+        //[MaxLength(50)]
+        //public string FirstName { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        public string LastName { get; set; }
+        //[Required]
+        //[MaxLength(50)]
+        //public string LastName { get; set; }
 
         [Required]
         [MaxLength(15)]

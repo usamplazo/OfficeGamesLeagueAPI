@@ -20,13 +20,13 @@ namespace Application.Scoreboards.Commands.CreateScoreboard
         public async Task<Result> Handle(CreateScoreboardCommand request, CancellationToken cancellationToken)
         {
             var scoreboard = new Scoreboard(request.ScoreboardId
-                                           , request.ContestantId
-                                           , request.DisciplineId
-                                           , request.TimeDisciplineStarted
-                                           , request.TimeDisciplineFinished
-                                           , request.DateDisciplinePlayed);
+                                      , request.ContestantId
+                                      , request.DisciplineId
+                                      , request.DateDisciplinePlayed
+                                      , request.CreatedOnUtc
+                                      , request.ModifiedOnUtc);
 
-            _scoreboardRepository.Create(scoreboard);
+            await _scoreboardRepository.Create(scoreboard);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 

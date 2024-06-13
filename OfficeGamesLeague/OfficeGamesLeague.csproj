@@ -46,6 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Persistance\Persistance.csproj" />
     <ProjectReference Include="..\src\Core\Application\Application.csproj" />
     <ProjectReference Include="..\src\External\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\src\External\Presentation\Presentation.csproj" />
